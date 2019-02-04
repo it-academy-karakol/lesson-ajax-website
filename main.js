@@ -22,3 +22,5 @@ for (let index = 0; index < navLinks.length; index++) {
     }
   }
 }
+
+navLinks[0].click();
