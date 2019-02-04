@@ -13,7 +13,7 @@ for (let index = 0; index < navLinks.length; index++) {
     xhr.send();
     xhr.onload = function() {
       try {
-        const data = JSON.parseJSON(xhr.responseText);
+        const data = JSON.parse(xhr.responseText);
 
         title.innerHTML = data.title;
         content.innerHTML = data.content;
