@@ -1,5 +1,6 @@
 const navLinks = document.querySelectorAll('nav a');
 const content = document.getElementById('content');
+const title = document.getElementById('title');
 
 for (let index = 0; index < navLinks.length; index++) {
   const navLink = navLinks[index];
@@ -8,10 +9,16 @@ for (let index = 0; index < navLinks.length; index++) {
     const target = event.srcElement.href.split('#').pop();
 
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', '/data/' + target + '.html');
+    xhr.open('GET', '/data/' + target + '.json');
     xhr.send();
     xhr.onload = function() {
-      content.innerHTML = xhr.responseText;
+      try {
+        const data = JSON.parseJSON(xhr.responseText);
+
+        title.innerHTML = data.title;
+        content.innerHTML = data.content;
+      }
+      catch {}
     }
   }
 }
